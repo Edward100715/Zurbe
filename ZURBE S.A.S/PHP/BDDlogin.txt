@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS zurbe;
+
+USE zurbe;
+
+CREATE TABLE registro 
+( 
+    nrodocumento int(10) not null,
+    nombreusuario varchar (25) not null,
+    email varchar (40) not null,
+    password varchar (40) not null,
+    departamento varchar (20) not null,
+    ciudad varchar (20) not null,
+    direccion varchar(35) not null,
+    telefono int(20) not null,
+    PRIMARY KEY (nrodocumento) 
+) Engine=InnoDB default charset=latin1; 

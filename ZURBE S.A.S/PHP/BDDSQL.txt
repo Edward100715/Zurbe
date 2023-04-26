@@ -1,0 +1,89 @@
+CREATE DATABASE ZURBE
+
+USE ZURBE
+
+CREATE TABLE Cliente(
+NroIdentificacion int PRIMARY KEY NOT NULL,
+Edad tinyint NOT NULL,
+Direccion varchar(30) NOT NULL,
+Municipio varchar(20) NOT NULL,
+Ciudad varchar(30) NOT NULL,
+Telefono int NOT NULL,
+IDProducto bigint NOT NULL CONSTRAINT [pk_IDProducto] FOREIGN KEY(IDProducto)
+REFERENCES [dbo].[Productos] (IDProducto),
+Correo varchar(50) NULL,
+Contraseña varchar(50) NULL,
+IDFactura bigint NOT NULL CONSTRAINT [pk_IDFactura] FOREIGN KEY(IDFactura)
+REFERENCES [dbo].[Factura] (IDFactura)
+)
+
+CREATE TABLE Productos(
+IDProducto bigint PRIMARY KEY NOT NULL,
+TipoProducto varchar(15) NULL,
+CodigoPostal int NULL,
+)
+
+CREATE TABLE AlquilerEspacios(
+IDProducto bigint PRIMARY KEY NOT NULL CONSTRAINT [pk_IDProductoAE] FOREIGN KEY(IDProducto)
+REFERENCES [dbo].[Productos] (IDProducto),
+NombreEspacio varchar(20) NOT NULL,
+Municipio varchar(20) NULL,
+Ciudad varchar(30) NOT NULL,
+Direccion varchar(30) NOT NULL,
+ValorAlquiler bigint NOT NULL,
+Descripcion varchar(500) NULL,
+Observaciones varchar(500) NULL,
+)
+
+CREATE TABLE CompraEspacios(
+IDProducto bigint PRIMARY KEY NOT NULL CONSTRAINT [pk_IDProductoCE] FOREIGN KEY(IDProducto)
+REFERENCES [dbo].[Productos] (IDProducto),
+NombreEspacio varchar(20) NOT NULL,
+Municipio varchar(20) NULL,
+Ciudad varchar(30) NOT NULL,
+Direccion varchar(30) NOT NULL,
+ValorEspacio bigint NOT NULL,
+Descripcion varchar(500) NULL,
+Observaciones varchar(500) NULL,
+)
+
+CREATE TABLE AlquilerPropiedad(
+IDProducto bigint PRIMARY KEY NOT NULL CONSTRAINT [pk_IDProductoAP] FOREIGN KEY(IDProducto)
+REFERENCES [dbo].[Productos] (IDProducto),
+NombrePropiedad varchar(20) NOT NULL,
+Municipio varchar(20) NULL,
+Ciudad varchar(30) NOT NULL,
+Direccion varchar(30) NOT NULL,
+ValorAlquiler bigint NOT NULL,
+Descripcion varchar(500) NULL,
+Observaciones varchar(500) NULL,
+)
+
+CREATE TABLE CompraPropiedad(
+IDProducto bigint PRIMARY KEY NOT NULL CONSTRAINT [pk_IDProductoCP] FOREIGN KEY(IDProducto)
+REFERENCES [dbo].[Productos] (IDProducto),
+NombrePropiedad varchar(20) NOT NULL,
+Municipio varchar(20) NULL,
+Ciudad varchar(30) NOT NULL,
+Direccion varchar(30) NOT NULL,
+ValorPropiedad bigint NOT NULL,
+Descripcion varchar(500) NULL,
+Observaciones varchar(500) NULL,
+)
+
+CREATE TABLE Factura(
+IDFactura bigint NOT NULL PRIMARY KEY,
+Fecha date NOT NULL,
+Producto varchar(15) NOT NULL,
+TipoPago int NOT NULL  CONSTRAINT [pk_TipoPago] FOREIGN KEY(TipoPago)
+REFERENCES [dbo].[TipoPago] (TipoPago),
+Intereses bigint NOT NULL,
+ValoresAdicionales bigint NOT NULL,
+ValorCompra bigint NOT NULL,
+ValorNeto bigint NOT NULL,
+)
+
+CREATE TABLE TipoPago(
+TipoPago int PRIMARY KEY NOT NULL,
+Pago varchar(30),
+)

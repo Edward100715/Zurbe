@@ -1,0 +1,22 @@
+#Chatbot {
+    width: 80px;
+    margin-left: 2%;
+    margin-top: 43%;
+    position: fixed;
+    border: 3px solid black;
+    border-radius: 50%;
+}
+#Chatbot:hover {
+    width: 86px;
+    transition: 0.2s;
+}
+
+#carouselExampleFade {
+    width: 65%;
+    margin-left: 18%;
+}
+
+.titllesh6 {
+    margin-left: 15%;
+    margin-right: 15%;
+}

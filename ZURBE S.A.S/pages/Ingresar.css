@@ -1,0 +1,41 @@
+*{
+    background-color: #008037;
+
+}
+
+#Logo{
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.Boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border: 3px solid #008037;
+    top: 50%;
+    color: white;
+}
+
+.Text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    top: 50%;
+    color: white;
+    margin: auto;
+}
+
+.H3{
+    text-align: center;
+    color: white;
+}
+
+#InpText{
+    text-align: center;
+}
